@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_location_weather/home.dart';
 import 'package:get/get.dart';
+
+import 'pages/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       title: "Flutter Location Weather",
-      home: Home(),
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
