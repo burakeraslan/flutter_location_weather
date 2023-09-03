@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_location_weather/controller.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
 
 // Permission
 Future<bool> handleLocationPermission(BuildContext context) async {
@@ -26,24 +24,4 @@ Future<bool> handleLocationPermission(BuildContext context) async {
     return false;
   }
   return true;
-}
-
-// Get Current Position
-Future getCurrentPosition(BuildContext context) async {
-  final permission = await handleLocationPermission(context);
-  final latitudeController = Get.find<LatitudeController>();
-  final longitudeController = Get.find<LongitudeController>();
-
-  if (permission == false) {
-    throw Exception("Location permission denied");
-  }
-
-  try {
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    latitudeController.updateLatitude(position.latitude);
-    longitudeController.updateLongitude(position.longitude);
-  } catch (e) {
-    debugPrint(e.toString());
-    rethrow;
-  }
 }
